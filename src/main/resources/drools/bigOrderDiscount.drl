@@ -1,0 +1,28 @@
+import org.example.models.Order;
+
+dialect  "java"
+
+rule "$50 discount for order over $1000"
+    no-loop
+    when
+          $order : Order(
+           $order.amount >= 1000 &&
+           $order.amount < 2000
+          )
+    then
+        $order.discount = 50.0;
+        $order.amountPayable = $order.amount - $order.discount;
+        update($order)
+    end
+
+rule "200 discount for order over $2000"
+    no-loop
+    when
+          $order : Order(
+               $order.amount >= 2000
+          )
+    then
+        $order.discount = 200.0;
+        $order.amountPayable = $order.amount - $order.discount;
+        update($order)
+    end

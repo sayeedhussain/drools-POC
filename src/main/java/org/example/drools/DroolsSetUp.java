@@ -18,7 +18,7 @@ public class DroolsSetUp {
     }
     private static KieBase setUpKnowledgeBase() {
         KnowledgeBuilder knowledgeBuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
-        knowledgeBuilder.add(ResourceFactory.newClassPathResource("drools/suggestRole.drl"), ResourceType.DRL);
+        knowledgeBuilder.add(ResourceFactory.newClassPathResource("drools/bigOrderDiscount.drl"), ResourceType.DRL);
         KnowledgeBuilderErrors errors = knowledgeBuilder.getErrors();
 
         if (errors.size() > 0) {
