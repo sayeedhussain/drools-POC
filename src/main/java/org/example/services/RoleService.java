@@ -8,10 +8,10 @@ import org.kie.api.runtime.KieSession;
 
 public class RoleService {
 
-    public static void assignRoleToApplicant(Applicant applicant) throws Exception {
+    public static SuggestedRole assignRoleToApplicant(Applicant applicant) throws Exception {
         SuggestedRole suggestedRole = new SuggestedRole();
         assignRole(applicant, suggestedRole);
-        System.out.println("Suggested Role : " + suggestedRole.getRole());
+        return suggestedRole;
     }
 
     public static void assignRole(Applicant applicant, SuggestedRole suggestedRole) throws Exception {
