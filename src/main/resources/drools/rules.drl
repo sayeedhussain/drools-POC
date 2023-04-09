@@ -1,16 +1,18 @@
-package org.example.drools.rules;
-
 import org.example.models.Applicant;
+import org.example.models.SuggestedRole;
 
-global org.example.models.SuggestedRole suggestedRole;
-
-dialect  "mvel"
+dialect  "java"
 
 rule "Suggest Manager Role"
     when
-        Applicant(experienceInYears > 10)
-        Applicant(currentSalary > 1000000 && currentSalary <=
-         2500000)
+        $applicant : Applicant(
+            $applicant.experienceInYears > 10 &&
+            $applicant.currentSalary > 1000000 &&
+            $applicant.currentSalary <= 2500000
+        )
+        $suggestedRole : SuggestedRole()
     then
-        suggestedRole.setRole("Manager");
-end
+        modify ( $suggestedRole ) {
+            role = "Manager";
+        }
+    end

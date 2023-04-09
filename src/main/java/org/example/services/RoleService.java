@@ -17,7 +17,7 @@ public class RoleService {
     public static void assignRole(Applicant applicant, SuggestedRole suggestedRole) throws Exception {
         KieSession kieSession = DroolsSetUp.getSession();
         kieSession.insert(applicant);
-        kieSession.setGlobal("suggestedRole", suggestedRole);
+        kieSession.insert(suggestedRole);
         kieSession.fireAllRules();
     }
 }
