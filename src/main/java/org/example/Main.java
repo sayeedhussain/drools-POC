@@ -12,51 +12,26 @@ public class Main {
         Order order1 = getOrder1();
         order1 = OrderService.applyDiscount(order1);
         System.out.println(
-                MessageFormat.format("Order Amount: {0}, Order Discount: {1}, Amount Payable: {2}", order1.amount, order1.discount, order1.amountPayable)
+                MessageFormat.format("Order Amount: {0}, Order Discount: {1}, Amount Payable: {2}", order1.getAmount(), order1.getDiscount(), order1.getAmountPayable())
         );
 
         Order order2 = getOrder2();
         order2 = OrderService.applyDiscount(order2);
         System.out.println(
-                MessageFormat.format("Order Amount: {0}, Order Discount: {1}, Amount Payable: {2}", order2.amount, order2.discount, order2.amountPayable)
+                MessageFormat.format("Order Amount: {0}, Order Discount: {1}, Amount Payable: {2}", order2.getAmount(), order2.getDiscount(), order2.getAmountPayable())
         );
 
     }
 
     private static Order getOrder1() {
-
-        OrderLineItem orderLineItem1 = new OrderLineItem();
-        orderLineItem1.id = "1";
-        orderLineItem1.productId = "product1";
-        orderLineItem1.quantity = 1;
-        orderLineItem1.pricePerUnit = 1200.00;
-
-        OrderLineItem orderLineItem2 = new OrderLineItem();
-        orderLineItem2.id = "2";
-        orderLineItem2.productId = "product2";
-        orderLineItem2.quantity = 1;
-        orderLineItem2.pricePerUnit = 500.00;
-
-        Order order = new Order();
-        order.id = "1";
-        order.lineItems = List.of(orderLineItem1, orderLineItem2);
-
-        return order;
+        OrderLineItem orderLineItem1 = new OrderLineItem("1", "product1", 1, 1200.00);
+        OrderLineItem orderLineItem2 = new OrderLineItem("2", "product2", 1, 500.00);
+        return new Order("1", List.of(orderLineItem1, orderLineItem2));
     }
 
     private static Order getOrder2() {
-
-        OrderLineItem orderLineItem1 = new OrderLineItem();
-        orderLineItem1.id = "1";
-        orderLineItem1.productId = "product1";
-        orderLineItem1.quantity = 2;
-        orderLineItem1.pricePerUnit = 1200.00;
-
-        Order order = new Order();
-        order.id = "2";
-        order.lineItems = List.of(orderLineItem1);
-
-        return order;
+        OrderLineItem orderLineItem1 =  new OrderLineItem("1", "product1", 2, 1200.00);
+        return new Order("2", List.of(orderLineItem1));
     }
 
 }

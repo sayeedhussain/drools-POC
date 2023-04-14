@@ -1,11 +1,14 @@
 package org.example.models;
 
-import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-@NoArgsConstructor
+@AllArgsConstructor
 public class OrderLineItem {
-    public String id;
-    public String productId;
-    public int quantity;
-    public double pricePerUnit;
+    private String id;
+    private String productId;
+    @Getter
+    private int quantity;
+    @Getter
+    private double pricePerUnit;
 }

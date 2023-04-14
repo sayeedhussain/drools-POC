@@ -6,12 +6,12 @@ rule "$50 discount for order over $1000"
     no-loop
     when
           $order : Order(
-           $order.amount >= 1000 &&
-           $order.amount < 2000
+           $order.getAmount() >= 1000 &&
+           $order.getAmount() < 2000
           )
     then
-        $order.discount = 50.0;
-        $order.amountPayable = $order.amount - $order.discount;
+        $order.setDiscount(50.0);
+        $order.setAmountPayable($order.getAmount() - $order.getDiscount());
         update($order)
     end
 
@@ -19,10 +19,10 @@ rule "200 discount for order over $2000"
     no-loop
     when
           $order : Order(
-               $order.amount >= 2000
+               $order.getAmount() >= 2000
           )
     then
-        $order.discount = 200.0;
-        $order.amountPayable = $order.amount - $order.discount;
+        $order.setDiscount(200.0);
+        $order.setAmountPayable($order.getAmount() - $order.getDiscount());
         update($order)
     end
