@@ -8,7 +8,7 @@ import java.text.MessageFormat;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Order order1 = getOrder1();
         order1 = OrderService.applyDiscount(order1);
         System.out.println(

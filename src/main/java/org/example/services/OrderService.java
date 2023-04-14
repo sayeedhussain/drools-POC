@@ -12,7 +12,7 @@ import java.util.List;
 
 public class OrderService {
 
-    public static Order applyDiscount(Order order) throws Exception {
+    public static Order applyDiscount(Order order) {
         return applyDiscountRules(order);
     }
 
